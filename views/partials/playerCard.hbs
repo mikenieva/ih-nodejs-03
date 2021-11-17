@@ -4,12 +4,20 @@
   <div class="card">
     <img
       class="card-img-top"
-      src="https://clutchpoints.com/wp-content/uploads/2019/08/THUMBNAIL_027.jpg"
+      src="{{this.photo}}"
       alt=""
     />
     <div class="card-body">
-      <h5 class="card-title">Lebron James</h5>
-      <p class="card-text">CLE</p>
+      <h5 class="card-title">{{this.name}} {{this.lastName}}</h5>
+      <p class="card-text">{{this.team}}</p>
     </div>
+
+	<div>
+		<span>Promedio de jugador</span>
+		{{#each this.average }}
+			<p>Año {{this.year}} - Valor: {{this.points}}</p>
+		{{/each}}
+	</div>
+
   </div>
 </div>

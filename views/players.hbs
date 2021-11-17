@@ -2,6 +2,11 @@
 	
 <p>Esta es nuestra sección de Players</p>
 
-{{> playerCard}}
+<ul>
+	{{!-- El #each itera un arreglo sobre cada elemento. --}}
+	{{!-- Es un similar a for || .map --}}
+	{{#each data }}
+		{{> playerCard this }}
+	{{/each}}
 
-
+</ul>
