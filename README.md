@@ -1,6 +1,27 @@
 # Desarrollo de proyecto
 
 
+## Uso de proyecto
+
+- Es necesario instalar las dependencias, tan pronto se clone el proyecto.
+
+```shell
+$ npm install
+```
+
+- Una vez hecho esto, crear un archivo `.env` para generar las variables de entorno. De preferencia, úsalo en el puerto 3005 por gusto del autor.
+
+`.env`
+```
+PORT=3005
+```
+
+
+
+
+
+
+
 ## Creación de `package.json`
 
 ```shell
