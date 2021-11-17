@@ -376,3 +376,87 @@ Finalmente, agreguemos un `header` personalizado para darle mayor claridad a nue
 
 
 ```
+
+## Activar `partials` y crear un archivo `playerCard.hbs` como un primer partial.
+
+- Activar nuestra sección de partials en `index.js`
+	- Importación de hbs.
+	- Utilizando el código de activación en el middleware.
+
+```javascript
+// index.js
+
+// 1. IMPORTACIONES
+const express 		= require("express")
+const app			= express()
+
+// -> HICIMOS LA IMPORTACIÓN DE HBS
+const hbs			= require("hbs")
+
+require("dotenv").config()
+
+
+// 2. MIDDLEWARES
+app.use(express.static('public'))
+
+app.set("views", __dirname + "/views")
+app.set("view engine", "hbs")
+
+// REGISTRO DE PARTIAL :)
+hbs.registerPartials(__dirname + "/views/partials")
+
+// 3. RUTAS
+app.get("/", (req, res) => {
+	res.render("index")
+})
+
+app.get("/players", (req, res) => {
+	res.render("players")
+})
+
+app.get("/teams", (req, res) => {
+	res.render("teams")
+})
+
+// 4. SERVIDOR
+app.listen(process.env.PORT, () => {
+	console.log(`Servidor activo en puerto ${process.env.PORT}`)
+})
+
+
+
+```
+
+- Creamos una carpeta que se llama `partials` dentro de nuestra carpeta de `views`.
+
+- Finalmente creamos un archivo llamado `playerCard.hbs`
+
+
+```hbs
+<!-- views/partials/playerCard.hbs -->
+
+<div class="col-md-4">
+  <div class="card">
+    <img
+      class="card-img-top"
+      src="https://clutchpoints.com/wp-content/uploads/2019/08/THUMBNAIL_027.jpg"
+      alt=""
+    />
+    <div class="card-body">
+      <h5 class="card-title">Lebron James</h5>
+      <p class="card-text">CLE</p>
+    </div>
+  </div>
+</div>
+```
+
+- Involucramos nuestro partial en la vista de `players.hbs`
+
+```hbs
+{{!-- views/players.hbs --}}
+	
+<p>Esta es nuestra sección de Players</p>
+
+{{> playerCard}}
+
+```
